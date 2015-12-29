@@ -34,9 +34,7 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vlg-LD-Dzj">
                                             <rect key="frame" x="120" y="8" width="22" height="22"/>
                                             <connections>
-                                                <action selector="addButton:" destination="20d-lR-iN2" eventType="touchUpInside" id="TRx-hP-lYr"/>
-                                                <action selector="addButtonPressed:" destination="20d-lR-iN2" eventType="touchUpInside" id="rZL-4c-qrX"/>
-                                                <action selector="addRecipeOnMenu:" destination="20d-lR-iN2" eventType="touchUpInside" id="6rK-bW-0hO"/>
+                                                <action selector="addButtonPressed:" destination="20d-lR-iN2" eventType="touchUpInside" id="ut1-P8-8zt"/>
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8hC-3f-1cJ">
@@ -64,7 +62,6 @@
                                     <constraint firstItem="8hC-3f-1cJ" firstAttribute="leading" secondItem="20d-lR-iN2" secondAttribute="leadingMargin" id="kCO-Ne-4HQ"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="addRecipeToMenuButton" destination="Vlg-LD-Dzj" id="eUb-bV-Srb"/>
                                     <outlet property="imageView" destination="6aN-bT-3Or" id="zbH-oq-ZvU"/>
                                     <outlet property="recipeName" destination="8hC-3f-1cJ" id="Loc-sh-A1Q"/>
                                 </connections>
@@ -149,7 +146,6 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gHS-2z-oax">
                                             <rect key="frame" x="96" y="12" width="22" height="22"/>
                                             <connections>
-                                                <action selector="addRecipeOnMenu:" destination="h8V-lM-Kpf" eventType="touchUpInside" id="DbR-zz-KEN"/>
                                                 <action selector="removeButtonPressed:" destination="h8V-lM-Kpf" eventType="touchUpInside" id="U2u-ko-Yj1"/>
                                             </connections>
                                         </button>
@@ -169,7 +165,6 @@
                                     <constraint firstItem="fF1-6X-eet" firstAttribute="leading" secondItem="h8V-lM-Kpf" secondAttribute="leading" id="j7k-Tn-cQG"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="addRecipeToMenuButton" destination="gHS-2z-oax" id="Qbl-hg-w0l"/>
                                     <outlet property="imageView" destination="fF1-6X-eet" id="3in-o5-oOA"/>
                                     <outlet property="recipeName" destination="Rmh-43-ypV" id="rss-Dm-yOU"/>
                                 </connections>

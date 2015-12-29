@@ -7,9 +7,13 @@
 //
 
 import Foundation
-struct Recipe{
+struct Recipe: Equatable{
     var name: String
     var imagePath: String
     var steps: [Step]
     var ingredients: [Ingredient]
+}
+
+func ==(one: Recipe, second: Recipe) -> Bool{
+    return one.name == second.name
 }
