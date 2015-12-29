@@ -19,7 +19,11 @@ class RecipesCollectionViewController: UIViewController, UICollectionViewDataSou
     Recipe(name: "Crock Pot", imagePath: "", steps: [], ingredients: []),
     Recipe(name: "Mushed potatoes", imagePath: "", steps: [], ingredients: [])]
     
-    var menuRecipes: [Recipe] = []
+    var menuRecipes: [Recipe] = []{
+        didSet{
+            btnRightBadge.badgeString = "\(menuRecipes.count)"
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +51,7 @@ class RecipesCollectionViewController: UIViewController, UICollectionViewDataSou
             let destination = segue.destinationViewController as! UITabBarController
             let firstVCFromTab = destination.viewControllers![0] as! MenuCollectionViewController
             firstVCFromTab.menuRecipes = menuRecipes
+            firstVCFromTab.menuUpdater = self
         }
     }
 }
@@ -54,6 +59,11 @@ class RecipesCollectionViewController: UIViewController, UICollectionViewDataSou
 extension RecipesCollectionViewController : DishAppender {
     func addRecipeToMenu(recipe: Recipe){
         menuRecipes.append(recipe)
-        btnRightBadge.badgeString = "\(menuRecipes.count)"
+    }
+}
+
+extension RecipesCollectionViewController: MenuUpdater{
+    func updateMenu(menuRecipes: [Recipe]) {
+        self.menuRecipes = menuRecipes
     }
 }

@@ -12,6 +12,7 @@ class MenuCollectionViewController: UIViewController, UICollectionViewDelegate, 
 
     var menuRecipes: [Recipe]!
     @IBOutlet weak var recipeCollection: UICollectionView!
+    var menuUpdater: MenuUpdater!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +39,11 @@ class MenuCollectionViewController: UIViewController, UICollectionViewDelegate, 
 extension MenuCollectionViewController: DishRemover{
     func removeRecipeFromMenu(recipe: Recipe){
         menuRecipes.removeAtIndex(menuRecipes.indexOf({$0 == recipe})!)
+        menuUpdater.updateMenu(menuRecipes)
         self.recipeCollection.reloadData()
     }
+}
+
+protocol MenuUpdater{
+    func updateMenu(menuRecipes: [Recipe])
 }
