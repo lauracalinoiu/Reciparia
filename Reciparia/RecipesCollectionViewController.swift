@@ -13,7 +13,11 @@ class RecipesCollectionViewController: UIViewController, UICollectionViewDataSou
     @IBOutlet weak var btnRightBadge: MIBadgeButton!
     @IBOutlet var recipesCollectionView: UICollectionView!
     
-    var recipes: [Recipe] = [Recipe(name: "Pancakes", imagePath: "", steps: [Step(text: "Mix milk, eggs and flour"), Step(text: "Put little oil in pan")], ingredients: []),
+    var recipes: [Recipe] = [Recipe(name: "Pancakes", imagePath: "", steps: [Step(text: "Mix milk, eggs and flour"), Step(text: "Put little oil in pan")], ingredients: [
+            Ingredient(category: "Produce", amount: 2, ingredient: "eggs", unit: ""),
+            Ingredient(category: "Produce", amount: 300, ingredient: "flour", unit: "g"),
+            Ingredient(category: "Produce", amount: 100, ingredient: "milk", unit: "ml"), ]
+        ),
     Recipe(name: "Caesar Salad", imagePath: "", steps: [], ingredients: []),
     Recipe(name: "Sheperd's pie", imagePath: "", steps: [], ingredients: []),
     Recipe(name: "Crock Pot", imagePath: "", steps: [], ingredients: []),
@@ -52,7 +56,31 @@ class RecipesCollectionViewController: UIViewController, UICollectionViewDataSou
             let firstVCFromTab = destination.viewControllers![0] as! MenuCollectionViewController
             firstVCFromTab.menuRecipes = menuRecipes
             firstVCFromTab.menuUpdater = self
+            
+            let secondVCFromTab = destination.viewControllers![1] as! IngredientsViewController
+            secondVCFromTab.ingredients = getAllIngredients()
         }
+    }
+    
+    func getAllIngredients() -> [Ingredient]{
+        var ingredients: [Ingredient] = []
+        
+        for recipe in menuRecipes{
+            ingredients.appendContentsOf(recipe.ingredients)
+        }
+        
+        return ingredients
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let tabbarController = storyboard.instantiateViewControllerWithIdentifier("RecipeTabBarController") as! UITabBarController
+        let recipeVC = tabbarController.viewControllers![0] as! RecipeViewController
+        recipeVC.recipe = recipes[indexPath.row]
+        
+        let stepsVC = tabbarController.viewControllers![1] as! StepsViewController
+        stepsVC.recipe = recipes[indexPath.row]
+        navigationController?.pushViewController(tabbarController, animated: true)
     }
 }
 

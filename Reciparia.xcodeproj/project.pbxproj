@@ -7,8 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D30A9C621C32D26400AD8292 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30A9C611C32D26400AD8292 /* RecipeViewController.swift */; };
+		D30A9C641C32D73B00AD8292 /* IngredientCellPlain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30A9C631C32D73B00AD8292 /* IngredientCellPlain.swift */; };
+		D30A9C661C32DEC200AD8292 /* StepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30A9C651C32DEC200AD8292 /* StepsViewController.swift */; };
 		D319655D1C327A0C0004A982 /* DishAppenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319655C1C327A0C0004A982 /* DishAppenderCell.swift */; };
 		D319655F1C327ECF0004A982 /* DishRemoverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319655E1C327ECF0004A982 /* DishRemoverCell.swift */; };
+		D31965611C32B1C70004A982 /* IngredientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31965601C32B1C70004A982 /* IngredientsViewController.swift */; };
+		D31965671C32C0420004A982 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31965661C32C0420004A982 /* CheckBox.swift */; };
+		D31965691C32C1360004A982 /* IngredientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31965681C32C1360004A982 /* IngredientCell.swift */; };
 		D3598EE31C31726F002CD4F9 /* MIBadgeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3598EE21C31726F002CD4F9 /* MIBadgeButton.swift */; };
 		D3598EE61C31776D002CD4F9 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3598EE51C31776D002CD4F9 /* Recipe.swift */; };
 		D3598EE81C3177BA002CD4F9 /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3598EE71C3177BA002CD4F9 /* Step.swift */; };
@@ -34,8 +40,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D30A9C611C32D26400AD8292 /* RecipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
+		D30A9C631C32D73B00AD8292 /* IngredientCellPlain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientCellPlain.swift; sourceTree = "<group>"; };
+		D30A9C651C32DEC200AD8292 /* StepsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsViewController.swift; sourceTree = "<group>"; };
 		D319655C1C327A0C0004A982 /* DishAppenderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishAppenderCell.swift; sourceTree = "<group>"; };
 		D319655E1C327ECF0004A982 /* DishRemoverCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishRemoverCell.swift; sourceTree = "<group>"; };
+		D31965601C32B1C70004A982 /* IngredientsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientsViewController.swift; sourceTree = "<group>"; };
+		D31965661C32C0420004A982 /* CheckBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
+		D31965681C32C1360004A982 /* IngredientCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientCell.swift; sourceTree = "<group>"; };
 		D3598EE21C31726F002CD4F9 /* MIBadgeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MIBadgeButton.swift; sourceTree = "<group>"; };
 		D3598EE51C31776D002CD4F9 /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		D3598EE71C3177BA002CD4F9 /* Step.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
@@ -107,7 +119,13 @@
 				D375D9A01C312F030077A139 /* AppDelegate.swift */,
 				D375D9C01C31622F0077A139 /* RecipesCollectionViewController.swift */,
 				D3598EED1C318B8B002CD4F9 /* MenuCollectionViewController.swift */,
+				D31965601C32B1C70004A982 /* IngredientsViewController.swift */,
+				D30A9C611C32D26400AD8292 /* RecipeViewController.swift */,
+				D30A9C651C32DEC200AD8292 /* StepsViewController.swift */,
 				D375D9C21C3164560077A139 /* RecipeCell.swift */,
+				D31965661C32C0420004A982 /* CheckBox.swift */,
+				D31965681C32C1360004A982 /* IngredientCell.swift */,
+				D30A9C631C32D73B00AD8292 /* IngredientCellPlain.swift */,
 				D319655C1C327A0C0004A982 /* DishAppenderCell.swift */,
 				D319655E1C327ECF0004A982 /* DishRemoverCell.swift */,
 				D3598EE21C31726F002CD4F9 /* MIBadgeButton.swift */,
@@ -233,13 +251,19 @@
 			files = (
 				D319655F1C327ECF0004A982 /* DishRemoverCell.swift in Sources */,
 				D319655D1C327A0C0004A982 /* DishAppenderCell.swift in Sources */,
+				D30A9C661C32DEC200AD8292 /* StepsViewController.swift in Sources */,
+				D30A9C621C32D26400AD8292 /* RecipeViewController.swift in Sources */,
 				D375D9C31C3164560077A139 /* RecipeCell.swift in Sources */,
 				D3598EEE1C318B8B002CD4F9 /* MenuCollectionViewController.swift in Sources */,
 				D375D9C11C31622F0077A139 /* RecipesCollectionViewController.swift in Sources */,
+				D31965691C32C1360004A982 /* IngredientCell.swift in Sources */,
+				D31965611C32B1C70004A982 /* IngredientsViewController.swift in Sources */,
 				D3598EEA1C3177E1002CD4F9 /* Ingredient.swift in Sources */,
 				D375D9A11C312F030077A139 /* AppDelegate.swift in Sources */,
+				D31965671C32C0420004A982 /* CheckBox.swift in Sources */,
 				D3598EE31C31726F002CD4F9 /* MIBadgeButton.swift in Sources */,
 				D3598EE61C31776D002CD4F9 /* Recipe.swift in Sources */,
+				D30A9C641C32D73B00AD8292 /* IngredientCellPlain.swift in Sources */,
 				D3598EE81C3177BA002CD4F9 /* Step.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
