@@ -12,7 +12,13 @@ class RecipeCell: UICollectionViewCell {
     
     @IBOutlet weak var recipeName: UILabel!
     @IBOutlet weak var imageView: UIImageView!
-    
-    @IBAction func addRecipeOnMenu(sender: UIButton) {
-    }
+    var recipe: Recipe!
+}
+
+protocol DishAppender{
+    func addRecipeToMenu(recipe: Recipe)
+}
+
+protocol DishRemover{
+    func removeRecipeFromMenu(recipe: Recipe)
 }

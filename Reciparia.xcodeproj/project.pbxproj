@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D319655D1C327A0C0004A982 /* DishAppenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319655C1C327A0C0004A982 /* DishAppenderCell.swift */; };
+		D319655F1C327ECF0004A982 /* DishRemoverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319655E1C327ECF0004A982 /* DishRemoverCell.swift */; };
 		D3598EE31C31726F002CD4F9 /* MIBadgeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3598EE21C31726F002CD4F9 /* MIBadgeButton.swift */; };
 		D3598EE61C31776D002CD4F9 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3598EE51C31776D002CD4F9 /* Recipe.swift */; };
 		D3598EE81C3177BA002CD4F9 /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3598EE71C3177BA002CD4F9 /* Step.swift */; };
 		D3598EEA1C3177E1002CD4F9 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3598EE91C3177E1002CD4F9 /* Ingredient.swift */; };
+		D3598EEE1C318B8B002CD4F9 /* MenuCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3598EED1C318B8B002CD4F9 /* MenuCollectionViewController.swift */; };
 		D375D9A11C312F030077A139 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D375D9A01C312F030077A139 /* AppDelegate.swift */; };
 		D375D9A61C312F030077A139 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D375D9A41C312F030077A139 /* Main.storyboard */; };
 		D375D9A81C312F030077A139 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D375D9A71C312F030077A139 /* Assets.xcassets */; };
@@ -31,10 +34,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D319655C1C327A0C0004A982 /* DishAppenderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishAppenderCell.swift; sourceTree = "<group>"; };
+		D319655E1C327ECF0004A982 /* DishRemoverCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishRemoverCell.swift; sourceTree = "<group>"; };
 		D3598EE21C31726F002CD4F9 /* MIBadgeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MIBadgeButton.swift; sourceTree = "<group>"; };
 		D3598EE51C31776D002CD4F9 /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		D3598EE71C3177BA002CD4F9 /* Step.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
 		D3598EE91C3177E1002CD4F9 /* Ingredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
+		D3598EED1C318B8B002CD4F9 /* MenuCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewController.swift; sourceTree = "<group>"; };
 		D375D99D1C312F030077A139 /* Reciparia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reciparia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D375D9A01C312F030077A139 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D375D9A51C312F030077A139 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -100,7 +106,10 @@
 				D3598EE41C31775D002CD4F9 /* model */,
 				D375D9A01C312F030077A139 /* AppDelegate.swift */,
 				D375D9C01C31622F0077A139 /* RecipesCollectionViewController.swift */,
+				D3598EED1C318B8B002CD4F9 /* MenuCollectionViewController.swift */,
 				D375D9C21C3164560077A139 /* RecipeCell.swift */,
+				D319655C1C327A0C0004A982 /* DishAppenderCell.swift */,
+				D319655E1C327ECF0004A982 /* DishRemoverCell.swift */,
 				D3598EE21C31726F002CD4F9 /* MIBadgeButton.swift */,
 				D375D9A41C312F030077A139 /* Main.storyboard */,
 				D375D9A71C312F030077A139 /* Assets.xcassets */,
@@ -222,7 +231,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D319655F1C327ECF0004A982 /* DishRemoverCell.swift in Sources */,
+				D319655D1C327A0C0004A982 /* DishAppenderCell.swift in Sources */,
 				D375D9C31C3164560077A139 /* RecipeCell.swift in Sources */,
+				D3598EEE1C318B8B002CD4F9 /* MenuCollectionViewController.swift in Sources */,
 				D375D9C11C31622F0077A139 /* RecipesCollectionViewController.swift in Sources */,
 				D3598EEA1C3177E1002CD4F9 /* Ingredient.swift in Sources */,
 				D375D9A11C312F030077A139 /* AppDelegate.swift in Sources */,
