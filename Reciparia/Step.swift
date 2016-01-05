@@ -7,6 +7,13 @@
 //
 
 import Foundation
-struct Step {
-    var text: String
+import Parse
+
+class Step: PFObject, PFSubclassing {
+    
+    class func parseClassName() -> String {
+        return "Step"
+    }
+    
+    @NSManaged var text: String?
 }

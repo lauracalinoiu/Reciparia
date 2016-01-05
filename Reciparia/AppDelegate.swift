@@ -7,15 +7,24 @@
 //
 
 import UIKit
+import Parse
+import Bolts
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        Parse.enableLocalDatastore()
+        Parse.setApplicationId("Z47Ni5RI5dpxIrmHFlUezalP5gNHbG2TJUSw8Ape",
+            clientKey: "p3zdaUwQCCkg2Sydgmt9M8hmsoyfL36n4weMJUoh")
+        
+        // MARK: - Parse Register Subclasses
+        Recipe.registerSubclass()
+        Step.registerSubclass()
+        Ingredient.registerSubclass()
+        
         return true
     }
 

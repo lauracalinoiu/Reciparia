@@ -24,11 +24,11 @@ class StepsViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("StepCell", forIndexPath: indexPath)
-        cell.textLabel!.text = recipe.steps[indexPath.row].text
+        cell.textLabel!.text = recipe.steps![indexPath.row].text
         return cell
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return recipe.steps.count
+        return recipe.steps!.count
     }
 }

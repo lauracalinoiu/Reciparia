@@ -5,15 +5,19 @@
 //  Created by Laura Calinoiu on 28/12/15.
 //  Copyright © 2015 3smurfs. All rights reserved.
 //
-
 import Foundation
-struct Recipe: Equatable{
-    var name: String
-    var imagePath: String
-    var steps: [Step]
-    var ingredients: [Ingredient]
-}
+import Parse
 
-func ==(one: Recipe, second: Recipe) -> Bool{
-    return one.name == second.name
+
+class Recipe: PFObject, PFSubclassing{
+    
+    class func parseClassName() -> String {
+        return "Recipe"
+    }
+    
+    // MARK: - Parse Core Properties
+    @NSManaged var name: String?
+    @NSManaged var pic: String?
+    @NSManaged var steps: [Step]?
+    @NSManaged var ingredients: [Ingredient]?
 }

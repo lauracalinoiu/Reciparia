@@ -22,13 +22,13 @@ class RecipeViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return recipe.ingredients.count
+        return recipe.ingredients!.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("IngredientCell", forIndexPath: indexPath) as! IngredientCellPlain
-        cell.quantityUnit.text = "\(recipe.ingredients[indexPath.row].amount) "+recipe.ingredients[indexPath.row].unit
-        cell.ingredientName.text = recipe.ingredients[indexPath.row].ingredient
+        cell.quantityUnit.text = "\(recipe.ingredients![indexPath.row].amount) "+recipe.ingredients![indexPath.row].unit!
+        cell.ingredientName.text = recipe.ingredients![indexPath.row].ingredient
         
         return cell
     }

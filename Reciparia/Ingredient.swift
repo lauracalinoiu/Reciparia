@@ -7,9 +7,16 @@
 //
 
 import Foundation
-struct Ingredient{
-    var category: String
-    var amount: Float
-    var ingredient: String
-    var unit: String
+import Parse
+
+class Ingredient: PFObject, PFSubclassing{
+    
+    class func parseClassName() -> String {
+        return "Ingredient"
+    }
+    
+    @NSManaged var category: String?
+    @NSManaged var ingredient: String?
+    @NSManaged var amount: NSNumber?
+    @NSManaged var unit: String?
 }

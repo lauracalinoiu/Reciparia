@@ -9,19 +9,11 @@
 import UIKit
 
 class RecipesCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
-   
+    
     @IBOutlet weak var btnRightBadge: MIBadgeButton!
     @IBOutlet var recipesCollectionView: UICollectionView!
     
-    var recipes: [Recipe] = [Recipe(name: "Pancakes", imagePath: "", steps: [Step(text: "Mix milk, eggs and flour"), Step(text: "Put little oil in pan")], ingredients: [
-            Ingredient(category: "Produce", amount: 2, ingredient: "eggs", unit: ""),
-            Ingredient(category: "Produce", amount: 300, ingredient: "flour", unit: "g"),
-            Ingredient(category: "Produce", amount: 100, ingredient: "milk", unit: "ml"), ]
-        ),
-    Recipe(name: "Caesar Salad", imagePath: "", steps: [], ingredients: []),
-    Recipe(name: "Sheperd's pie", imagePath: "", steps: [], ingredients: []),
-    Recipe(name: "Crock Pot", imagePath: "", steps: [], ingredients: []),
-    Recipe(name: "Mushed potatoes", imagePath: "", steps: [], ingredients: [])]
+    var recipes: [Recipe] = []
     
     var menuRecipes: [Recipe] = []{
         didSet{
@@ -35,8 +27,23 @@ class RecipesCollectionViewController: UIViewController, UICollectionViewDataSou
         recipesCollectionView.delegate = self
         recipesCollectionView.dataSource = self
         btnRightBadge.badgeString = "_"
+        loadRecipesFromParse()
     }
-
+    
+    func loadRecipesFromParse(){
+        ParseAPIClient.sharedInstance.getQuestionsWithLimit{[unowned self] results, error in
+            guard error == nil else {
+                return
+            }
+            guard results != nil else {
+                return
+            }
+            
+            self.recipes = results
+            self.recipesCollectionView.reloadData()
+        }
+    }
+    
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return recipes.count
     }
@@ -49,7 +56,7 @@ class RecipesCollectionViewController: UIViewController, UICollectionViewDataSou
         cell.appender = self
         return cell
     }
- 
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ToTheMenu"{
             let destination = segue.destinationViewController as! UITabBarController
@@ -66,7 +73,9 @@ class RecipesCollectionViewController: UIViewController, UICollectionViewDataSou
         var ingredients: [Ingredient] = []
         
         for recipe in menuRecipes{
-            ingredients.appendContentsOf(recipe.ingredients)
+            if let ingredientsUnwrapped = recipe.ingredients{
+                ingredients.appendContentsOf(ingredientsUnwrapped)
+            }
         }
         
         return ingredients
