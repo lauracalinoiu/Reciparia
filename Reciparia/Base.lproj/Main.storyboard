@@ -156,7 +156,7 @@
                             <constraint firstItem="q7p-Vc-LPb" firstAttribute="leading" secondItem="12u-Gz-rCN" secondAttribute="leading" id="Mef-Es-wua"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Ingredients" id="0Hs-ZI-geJ"/>
+                    <tabBarItem key="tabBarItem" title="Ingredients" image="ingredients" id="0Hs-ZI-geJ"/>
                     <connections>
                         <outlet property="ingredients" destination="q7p-Vc-LPb" id="5ci-JE-Bad"/>
                     </connections>
@@ -165,7 +165,7 @@
             </objects>
             <point key="canvasLocation" x="3125" y="1690"/>
         </scene>
-        <!--Steps-->
+        <!--Cook-->
         <scene sceneID="yWO-jB-bit">
             <objects>
                 <viewController storyboardIdentifier="StepsViewController" automaticallyAdjustsScrollViewInsets="NO" id="TDG-XY-XJP" customClass="StepsViewController" customModule="Reciparia" customModuleProvider="target" sceneMemberID="viewController">
@@ -194,7 +194,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Steps" id="0ks-1I-Be5"/>
+                    <tabBarItem key="tabBarItem" title="Cook" image="cook" id="0ks-1I-Be5"/>
                     <connections>
                         <outlet property="stepsTable" destination="Qiu-1q-YcV" id="Wtm-ej-1aa"/>
                     </connections>
@@ -272,14 +272,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Shopping List" id="oUL-a5-eUZ"/>
+                    <tabBarItem key="tabBarItem" title="Shopping List" image="shopping_list" id="oUL-a5-eUZ"/>
                     <connections>
                         <outlet property="ingredientsTableView" destination="D1E-5V-894" id="9qd-Os-7sd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qGd-kq-1kS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3868" y="1253"/>
+            <point key="canvasLocation" x="2910" y="1031"/>
         </scene>
         <!--Plan-->
         <scene sceneID="rJ2-Sa-v5t">
@@ -343,14 +343,14 @@
                             </collectionViewCell>
                         </cells>
                     </collectionView>
-                    <tabBarItem key="tabBarItem" title="Plan" id="hEx-59-18f"/>
+                    <tabBarItem key="tabBarItem" title="Plan" image="menu" id="hEx-59-18f"/>
                     <connections>
                         <outlet property="recipeCollection" destination="TR6-1t-eFs" id="9CL-sG-4To"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DFI-E1-e3h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2890" y="497"/>
+            <point key="canvasLocation" x="2910" y="319"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Qhh-3Z-kZZ">
@@ -386,7 +386,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0s1-NX-SfO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2018" y="880"/>
+            <point key="canvasLocation" x="2026" y="684"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="FKn-aN-EYQ">
@@ -407,4 +407,10 @@
             <point key="canvasLocation" x="2308" y="2034"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="cook" width="32" height="32"/>
+        <image name="ingredients" width="32" height="32"/>
+        <image name="menu" width="32" height="32"/>
+        <image name="shopping_list" width="32" height="32"/>
+    </resources>
 </document>
