@@ -12,9 +12,9 @@ import Parse
 class ParseAPIClient{
   
   let NETWORK_INACCESSIBLE = "The network was inaccesible"
-  let questionQueryLimit = 10
+  let questionQueryLimit = 100
   
-  func getQuestionsWithLimit(completionHandler: (result: [Recipe]!, error: String?) -> Void){
+  func getRecipesWithLimit(completionHandler: (result: [Recipe]!, error: String?) -> Void){
     let query = PFQuery(className: "Recipe")
     query.limit = questionQueryLimit
     query.findObjectsInBackgroundWithBlock {
@@ -42,11 +42,42 @@ class ParseAPIClient{
     }
   }
   
+  func getAllIngredients(menuRecipes: [Recipe], result: (ingredients: [Ingredient]) -> Void){
+    var ingredients: [Ingredient] = []
+    
+    let tasks = menuRecipes.map { $0.toIngredients.query().findObjectsInBackground().continueWithBlock{task in
+      if let objectsUnwrapped = task.result as? [Ingredient]{
+        self.sync(ingredients){
+          ingredients.appendContentsOf(objectsUnwrapped)
+        }
+      }
+      return task
+      }
+    }
+    
+    let aggregateTask = BFTask(forCompletionOfAllTasks: tasks)
+    aggregateTask.continueWithBlock{ task in
+      if (task.error == nil) {
+        result(ingredients: ingredients)
+      }
+      return nil
+    }
+  }
+}
+
+extension ParseAPIClient{
+  func sync(lock: AnyObject, closure: () -> Void){
+    objc_sync_enter(lock)
+    closure()
+    objc_sync_exit(lock)
+  }
+}
+
+extension ParseAPIClient{
   class var sharedInstance: ParseAPIClient{
     struct Static{
       static let instance: ParseAPIClient = ParseAPIClient()
     }
     return Static.instance
   }
-  
 }

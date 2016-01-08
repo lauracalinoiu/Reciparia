@@ -16,7 +16,6 @@ class RecipesCollectionViewController: UIViewController, UICollectionViewDataSou
   @IBOutlet var recipesCollectionView: UICollectionView!
   
   var recipes: [Recipe] = []
-  
   var menuRecipes: [Recipe] = []{
     didSet{
       btnRightBadge.badgeString = "\(menuRecipes.count)"
@@ -29,19 +28,8 @@ class RecipesCollectionViewController: UIViewController, UICollectionViewDataSou
     recipesCollectionView.delegate = self
     recipesCollectionView.dataSource = self
     btnRightBadge.badgeString = "_"
-    loadRecipesFromParse()
-  }
-  
-  func loadRecipesFromParse(){
-    ParseAPIClient.sharedInstance.getQuestionsWithLimit{[unowned self] results, error in
-      guard error == nil else {
-        return
-      }
-      guard results != nil else {
-        return
-      }
-      
-      self.recipes = results
+    loadRecipesFromParse{(recipes: [Recipe]) -> Void in
+      self.recipes = recipes
       self.recipesCollectionView.reloadData()
     }
   }
@@ -59,48 +47,6 @@ class RecipesCollectionViewController: UIViewController, UICollectionViewDataSou
     return cell
   }
   
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    if segue.identifier == "ToTheMenu"{
-      let destination = segue.destinationViewController as! UITabBarController
-      let firstVCFromTab = destination.viewControllers![0] as! MenuCollectionViewController
-      firstVCFromTab.menuRecipes = menuRecipes
-      firstVCFromTab.menuUpdater = self
-      
-      let secondVCFromTab = destination.viewControllers![1] as! IngredientsViewController
-      getAllIngredients(){ (ingredients: [Ingredient]) -> Void in
-        secondVCFromTab.ingredients = ingredients
-      }
-    }
-  }
-  
-  func sync(lock: AnyObject, closure: () -> Void){
-    objc_sync_enter(lock)
-    closure()
-    objc_sync_exit(lock)
-  }
-  
-  func getAllIngredients(result: (ingredients: [Ingredient]) -> Void){
-    var ingredients: [Ingredient] = []
-    
-    let tasks = menuRecipes.map { $0.toIngredients.query().findObjectsInBackground().continueWithBlock{task in
-      if let objectsUnwrapped = task.result as? [Ingredient]{
-        self.sync(ingredients){
-          ingredients.appendContentsOf(objectsUnwrapped)
-        }
-      }
-      return task
-      }
-    }
-    
-    let aggregateTask = BFTask(forCompletionOfAllTasks: tasks)
-    aggregateTask.continueWithBlock{ task in
-      if (task.error == nil) {
-        result(ingredients: ingredients)
-      }
-      return nil
-    }
-  }
-  
   func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
     let tabbarController = storyboard.instantiateViewControllerWithIdentifier("RecipeTabBarController") as! UITabBarController
@@ -110,6 +56,33 @@ class RecipesCollectionViewController: UIViewController, UICollectionViewDataSou
     let stepsVC = tabbarController.viewControllers![1] as! StepsViewController
     stepsVC.recipe = recipes[indexPath.row]
     navigationController?.pushViewController(tabbarController, animated: true)
+  }
+  
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if segue.identifier == "ToTheMenu"{
+      let destination = segue.destinationViewController as! UITabBarController
+      let firstVCFromTab = destination.viewControllers![0] as! MenuCollectionViewController
+      firstVCFromTab.menuRecipes = menuRecipes
+      firstVCFromTab.menuUpdater = self
+      
+      let secondVCFromTab = destination.viewControllers![1] as! IngredientsViewController
+      ParseAPIClient.sharedInstance.getAllIngredients(menuRecipes){ (ingredients: [Ingredient]) -> Void in
+        secondVCFromTab.ingredients = ingredients
+      }
+    }
+  }
+  
+  
+  func loadRecipesFromParse(setUpOnUI: (recipes: [Recipe]) -> Void){
+    ParseAPIClient.sharedInstance.getRecipesWithLimit{ results, error in
+      guard error == nil else {
+        return
+      }
+      guard results != nil else {
+        return
+      }
+      setUpOnUI(recipes: results)
+    }
   }
 }
 
