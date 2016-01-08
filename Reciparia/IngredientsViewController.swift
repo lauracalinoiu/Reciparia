@@ -9,27 +9,34 @@
 import UIKit
 
 class IngredientsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+  
+  @IBOutlet weak var ingredientsTableView: UITableView!
+  var ingredients: [Ingredient]!
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
     
-    @IBOutlet weak var ingredientsTableView: UITableView!
-    var ingredients: [Ingredient]!
+    ingredientsTableView.delegate = self
+    ingredientsTableView.dataSource = self
+  }
+  
+  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCellWithIdentifier("IngredientCell", forIndexPath: indexPath) as! IngredientCell
+    cell.checkbox = CheckBox()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        ingredientsTableView.delegate = self
-        ingredientsTableView.dataSource = self
+    if let amount = ingredients[indexPath.row].amount {
+      cell.unitText.text = "\(amount)"
     }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("IngredientCell", forIndexPath: indexPath) as! IngredientCell
-        cell.checkbox = CheckBox()
-//        cell.unitText.text = "\(ingredients[indexPath.row].amount)"+" "+ingredients[indexPath.row].unit!
-        cell.ingredientText.text = ingredients[indexPath.row].ingredient
+    if let unit = ingredients[indexPath.row].unit{
+      cell.unitText.text = cell.unitText.text! + "  \(unit)"
+    }
 
-        return cell
-    }
+    cell.ingredientText.text = ingredients[indexPath.row].ingredient
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ingredients.count
-    }
+    return cell
+  }
+  
+  func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return ingredients.count
+  }
 }

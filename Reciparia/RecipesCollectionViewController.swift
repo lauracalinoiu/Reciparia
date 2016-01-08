@@ -10,7 +10,7 @@ import UIKit
 import Bolts
 import Parse
 
-class RecipesCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
+class RecipesCollectionViewController: UIViewController{
   
   @IBOutlet weak var btnRightBadge: MIBadgeButton!
   @IBOutlet var recipesCollectionView: UICollectionView!
@@ -24,7 +24,6 @@ class RecipesCollectionViewController: UIViewController, UICollectionViewDataSou
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
     recipesCollectionView.delegate = self
     recipesCollectionView.dataSource = self
     btnRightBadge.badgeString = "_"
@@ -32,30 +31,6 @@ class RecipesCollectionViewController: UIViewController, UICollectionViewDataSou
       self.recipes = recipes
       self.recipesCollectionView.reloadData()
     }
-  }
-  
-  func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return recipes.count
-  }
-  
-  func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCellWithReuseIdentifier("RecipeCell", forIndexPath: indexPath) as! DishAppenderCell
-    
-    cell.recipeName.text = recipes[indexPath.row].name
-    cell.recipe = recipes[indexPath.row]
-    cell.appender = self
-    return cell
-  }
-  
-  func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-    let tabbarController = storyboard.instantiateViewControllerWithIdentifier("RecipeTabBarController") as! UITabBarController
-    let recipeVC = tabbarController.viewControllers![0] as! RecipeViewController
-    recipeVC.recipe = recipes[indexPath.row]
-    
-    let stepsVC = tabbarController.viewControllers![1] as! StepsViewController
-    stepsVC.recipe = recipes[indexPath.row]
-    navigationController?.pushViewController(tabbarController, animated: true)
   }
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -83,6 +58,33 @@ class RecipesCollectionViewController: UIViewController, UICollectionViewDataSou
       }
       setUpOnUI(recipes: results)
     }
+  }
+}
+
+extension RecipesCollectionViewController: UICollectionViewDataSource, UICollectionViewDelegate{
+  
+  func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return recipes.count
+  }
+  
+  func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    let cell = collectionView.dequeueReusableCellWithReuseIdentifier("RecipeCell", forIndexPath: indexPath) as! DishAppenderCell
+    
+    cell.recipeName.text = recipes[indexPath.row].name
+    cell.recipe = recipes[indexPath.row]
+    cell.appender = self
+    return cell
+  }
+  
+  func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    let tabbarController = storyboard.instantiateViewControllerWithIdentifier("RecipeTabBarController") as! UITabBarController
+    let recipeVC = tabbarController.viewControllers![0] as! RecipeViewController
+    recipeVC.recipe = recipes[indexPath.row]
+    
+    let stepsVC = tabbarController.viewControllers![1] as! StepsViewController
+    stepsVC.recipe = recipes[indexPath.row]
+    navigationController?.pushViewController(tabbarController, animated: true)
   }
 }
 

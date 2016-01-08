@@ -15,8 +15,8 @@ class Ingredient: PFObject, PFSubclassing{
         return "Ingredients"
     }
  
-    //@NSManaged var category: String?
+    @NSManaged var category: String?
     @NSManaged var ingredient: String?
-    //@NSManaged var amount: NSNumber?
-    //@NSManaged var unit: String?
+    @NSManaged var amount: NSNumber?
+    @NSManaged var unit: String?
 }
