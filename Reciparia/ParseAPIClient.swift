@@ -10,30 +10,43 @@ import Foundation
 import Parse
 
 class ParseAPIClient{
-
-    let NETWORK_INACCESSIBLE = "The network was inaccesible"
-    let questionQueryLimit = 10
-    
-    func getQuestionsWithLimit(completionHandler: (result: [Recipe]!, error: String?) -> Void){
-        let query = PFQuery(className: "Recipe")
-        query.limit = questionQueryLimit
-        query.findObjectsInBackgroundWithBlock {
-            (objects: [PFObject]?, error: NSError?) -> Void in
-            if error == nil {
-                if let objectsUnwrapped = objects as? [Recipe]{
-                    completionHandler(result: objectsUnwrapped, error: nil)
-                }
-            } else {
-                completionHandler(result: nil, error: self.NETWORK_INACCESSIBLE)
-            }
+  
+  let NETWORK_INACCESSIBLE = "The network was inaccesible"
+  let questionQueryLimit = 10
+  
+  func getQuestionsWithLimit(completionHandler: (result: [Recipe]!, error: String?) -> Void){
+    let query = PFQuery(className: "Recipe")
+    query.limit = questionQueryLimit
+    query.findObjectsInBackgroundWithBlock {
+      (objects: [PFObject]?, error: NSError?) -> Void in
+      if error == nil {
+        if let objectsUnwrapped = objects as? [Recipe]{
+          completionHandler(result: objectsUnwrapped, error: nil)
         }
+      } else {
+        completionHandler(result: nil, error: self.NETWORK_INACCESSIBLE)
+      }
     }
-    
-    class var sharedInstance: ParseAPIClient{
-        struct Static{
-            static let instance: ParseAPIClient = ParseAPIClient()
+  }
+  
+  func getIngredientsForARecipe(recipe: Recipe, completionHandler: (result: [Ingredient]!, error: String?) -> Void){
+    let query = recipe.toIngredients.query()
+    query.findObjectsInBackgroundWithBlock{results, error in
+      if error == nil {
+        if let objectsUnwrapped = results as? [Ingredient]{
+          completionHandler(result: objectsUnwrapped, error: nil)
         }
-        return Static.instance
+      } else {
+        completionHandler(result: nil, error: self.NETWORK_INACCESSIBLE)
+      }
     }
-
+  }
+  
+  class var sharedInstance: ParseAPIClient{
+    struct Static{
+      static let instance: ParseAPIClient = ParseAPIClient()
+    }
+    return Static.instance
+  }
+  
 }

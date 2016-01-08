@@ -12,11 +12,11 @@ import Parse
 class Ingredient: PFObject, PFSubclassing{
     
     class func parseClassName() -> String {
-        return "Ingredient"
+        return "Ingredients"
     }
-    
-    @NSManaged var category: String?
+ 
+    //@NSManaged var category: String?
     @NSManaged var ingredient: String?
-    @NSManaged var amount: NSNumber?
-    @NSManaged var unit: String?
+    //@NSManaged var amount: NSNumber?
+    //@NSManaged var unit: String?
 }

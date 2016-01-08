@@ -158,7 +158,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Ingredients" image="ingredients" id="0Hs-ZI-geJ"/>
                     <connections>
-                        <outlet property="ingredients" destination="q7p-Vc-LPb" id="5ci-JE-Bad"/>
+                        <outlet property="ingredientsTableView" destination="q7p-Vc-LPb" id="Efy-ku-Y26"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ni6-le-8je" userLabel="First Responder" sceneMemberID="firstResponder"/>
