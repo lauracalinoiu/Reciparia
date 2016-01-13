@@ -42,7 +42,7 @@ class RecipesCollectionViewController: UIViewController{
       
       let secondVCFromTab = destination.viewControllers![1] as! IngredientsViewController
       ParseAPIClient.sharedInstance.getAllIngredients(menuRecipes){ (ingredients: [Ingredient]) -> Void in
-        secondVCFromTab.ingredients = ingredients
+        secondVCFromTab.ingredients = [ingredients, []]
       }
     }
   }

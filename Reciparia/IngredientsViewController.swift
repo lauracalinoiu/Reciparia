@@ -11,32 +11,58 @@ import UIKit
 class IngredientsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
   
   @IBOutlet weak var ingredientsTableView: UITableView!
-  var ingredients: [Ingredient]!
+  var ingredients: [[Ingredient]] = [[]]
+  let headerTitles = ["To buy", "Got'em"]
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
     ingredientsTableView.delegate = self
     ingredientsTableView.dataSource = self
+    
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier("IngredientCell", forIndexPath: indexPath) as! IngredientCell
-    cell.checkbox = CheckBox()
-    
-    if let amount = ingredients[indexPath.row].amount {
+    cell.checkbox.checkboxDelegate = self
+    cell.checkbox.checkboxIndex = indexPath.row
+    cell.checkbox.isChecked = indexPath.section == 1
+    if let amount = ingredients[indexPath.section][indexPath.row].amount {
       cell.unitText.text = "\(amount)"
     }
-    if let unit = ingredients[indexPath.row].unit{
+    if let unit = ingredients[indexPath.section][indexPath.row].unit{
       cell.unitText.text = cell.unitText.text! + "  \(unit)"
     }
-
-    cell.ingredientText.text = ingredients[indexPath.row].ingredient
-    
+    cell.ingredientText.text = ingredients[indexPath.section][indexPath.row].ingredient
     return cell
   }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return ingredients[section].count
+  }
+  
+  func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return ingredients.count
+  }
+  
+  func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    return headerTitles[section]
+  }
+}
+
+extension IngredientsViewController: CheckboxChanger{
+  func doChange(stateOfCheckbox: Bool, row: Int){
+    let fromSection = stateOfCheckbox ? 0 : 1
+    let toSection = stateOfCheckbox ? 1 : 0
+    
+    let fromIndexPath = NSIndexPath(forRow: row, inSection: fromSection)
+    let toIndexPath = NSIndexPath(forRow: 0, inSection: toSection)
+    
+    let dataPiece = ingredients[fromIndexPath.section][fromIndexPath.row]
+    ingredients[toIndexPath.section].insert(dataPiece, atIndex: toIndexPath.row)
+    ingredients[fromIndexPath.section].removeAtIndex(fromIndexPath.row)
+    
+    ingredientsTableView.moveRowAtIndexPath(fromIndexPath, toIndexPath: toIndexPath)
+    ingredientsTableView.reloadData()
   }
 }
