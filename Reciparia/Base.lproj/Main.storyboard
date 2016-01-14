@@ -212,11 +212,17 @@
                         <viewControllerLayoutGuide type="bottom" id="HoO-K7-ynp"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ErG-ax-4G9">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="49" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="D1E-5V-894">
-                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ji8-OW-ibO">
+                                <rect key="frame" x="279" y="249" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="49" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="D1E-5V-894">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="519"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="IngredientCell" rowHeight="49" id="Q5u-tY-ClC" customClass="IngredientCell" customModule="Reciparia" customModuleProvider="target">
@@ -271,7 +277,16 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="D1E-5V-894" firstAttribute="centerY" secondItem="ji8-OW-ibO" secondAttribute="centerY" id="2jb-4k-8NL"/>
+                            <constraint firstAttribute="trailing" secondItem="D1E-5V-894" secondAttribute="trailing" id="85U-iW-yHl"/>
+                            <constraint firstItem="D1E-5V-894" firstAttribute="top" secondItem="I7a-0c-SEV" secondAttribute="bottom" id="Tuh-YN-VE1"/>
+                            <constraint firstItem="D1E-5V-894" firstAttribute="centerX" secondItem="ji8-OW-ibO" secondAttribute="centerX" id="bev-Ll-Icw"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="D1E-5V-894" secondAttribute="bottom" constant="-32" id="nMf-a8-Kmh"/>
+                            <constraint firstItem="D1E-5V-894" firstAttribute="leading" secondItem="ErG-ax-4G9" secondAttribute="leading" id="uEK-7v-oDI"/>
+                        </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="Shopping List" image="shopping_list" id="oUL-a5-eUZ"/>
                     <connections>
                         <outlet property="ingredientsTableView" destination="D1E-5V-894" id="9qd-Os-7sd"/>

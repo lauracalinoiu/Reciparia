@@ -16,7 +16,6 @@ class IngredientsViewController: UIViewController, UITableViewDataSource, UITabl
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
     ingredientsTableView.delegate = self
     ingredientsTableView.dataSource = self
     
@@ -25,7 +24,7 @@ class IngredientsViewController: UIViewController, UITableViewDataSource, UITabl
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier("IngredientCell", forIndexPath: indexPath) as! IngredientCell
     cell.checkbox.checkboxDelegate = self
-    cell.checkbox.checkboxIndex = indexPath.row
+    cell.checkbox.checkboxIndex = indexPath
     cell.checkbox.isChecked = indexPath.section == 1
     if let amount = ingredients[indexPath.section][indexPath.row].amount {
       cell.unitText.text = "\(amount)"
@@ -51,11 +50,11 @@ class IngredientsViewController: UIViewController, UITableViewDataSource, UITabl
 }
 
 extension IngredientsViewController: CheckboxChanger{
-  func doChange(stateOfCheckbox: Bool, row: Int){
-    let fromSection = stateOfCheckbox ? 0 : 1
-    let toSection = stateOfCheckbox ? 1 : 0
+  func doChange(checkboxIndex: NSIndexPath){
+    let fromSection = checkboxIndex.section
+    let toSection = 1 - fromSection
     
-    let fromIndexPath = NSIndexPath(forRow: row, inSection: fromSection)
+    let fromIndexPath = checkboxIndex
     let toIndexPath = NSIndexPath(forRow: 0, inSection: toSection)
     
     let dataPiece = ingredients[fromIndexPath.section][fromIndexPath.row]
