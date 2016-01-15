@@ -38,8 +38,13 @@ class RecipeViewController: UIViewController, UITableViewDelegate, UITableViewDa
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier("IngredientCell", forIndexPath: indexPath) as! IngredientCellPlain
-    cell.quantityUnit.text = "\(ingredients[indexPath.row].amount) " + ingredients[indexPath.row].unit!
-    cell.ingredientName.text = ingredients[indexPath.row].ingredient
+    if let amount = ingredients[indexPath.row].amount, let unit = ingredients[indexPath.row].unit{
+      cell.quantityUnit.text = "\(amount) \(unit)"
+    }
+    
+    if let ingredientName = ingredients[indexPath.row].ingredient{
+      cell.ingredientName.text = ingredientName
+    }
     
     return cell
   }

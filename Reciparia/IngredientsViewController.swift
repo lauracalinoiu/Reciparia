@@ -18,13 +18,14 @@ class IngredientsViewController: UIViewController, UITableViewDataSource, UITabl
     super.viewDidLoad()
     ingredientsTableView.delegate = self
     ingredientsTableView.dataSource = self
-    
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier("IngredientCell", forIndexPath: indexPath) as! IngredientCell
     cell.checkbox.checkboxDelegate = self
-    cell.checkbox.checkboxIndex = indexPath
+    cell.delegate = self
+    cell.checkbox.checkboxDataSource = cell
+    
     cell.checkbox.isChecked = indexPath.section == 1
     if let amount = ingredients[indexPath.section][indexPath.row].amount {
       cell.unitText.text = "\(amount)"
@@ -49,7 +50,7 @@ class IngredientsViewController: UIViewController, UITableViewDataSource, UITabl
   }
 }
 
-extension IngredientsViewController: CheckboxChanger{
+extension IngredientsViewController: CheckboxDelegate{
   func doChange(checkboxIndex: NSIndexPath){
     let fromSection = checkboxIndex.section
     let toSection = 1 - fromSection
@@ -62,6 +63,11 @@ extension IngredientsViewController: CheckboxChanger{
     ingredients[fromIndexPath.section].removeAtIndex(fromIndexPath.row)
     
     ingredientsTableView.moveRowAtIndexPath(fromIndexPath, toIndexPath: toIndexPath)
-    ingredientsTableView.reloadData()
+  }
+}
+
+extension IngredientsViewController: IngredientCellDelegate{
+  func getCellIndexPath(cell: UITableViewCell) -> NSIndexPath{
+    return ingredientsTableView.indexPathForCell(cell)!
   }
 }

@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 //Nice custom button for emulate a swift checkbox, since swift does not contain one
 class CheckBox: UIButton{
   let checkedImage = UIImage(named: "checked")
@@ -22,8 +21,8 @@ class CheckBox: UIButton{
       }
     }
   }
-  var checkboxDelegate: CheckboxChanger?
-  var checkboxIndex: NSIndexPath!
+  var checkboxDelegate: CheckboxDelegate?
+  var checkboxDataSource: CheckboxDataSource?
   
   override func awakeFromNib() {
     self.addTarget(self, action: "buttonClicked:", forControlEvents: .TouchUpInside)
@@ -33,13 +32,17 @@ class CheckBox: UIButton{
   func buttonClicked(sender: UIButton){
     if sender == self {
       isChecked = !isChecked
-      if let delegate = checkboxDelegate, let index = checkboxIndex{
-        delegate.doChange(index)
+      if let delegate = checkboxDelegate, dataSource = checkboxDataSource{
+        delegate.doChange(dataSource.getCellIndexPath())
       }
     }
   }
 }
 
-protocol CheckboxChanger{
+protocol CheckboxDelegate{
   func doChange(checkboxIndex: NSIndexPath)
+}
+
+protocol CheckboxDataSource{
+  func getCellIndexPath() -> NSIndexPath
 }

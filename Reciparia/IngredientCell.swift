@@ -8,9 +8,16 @@
 
 import UIKit
 
-class IngredientCell: UITableViewCell {
-
-    @IBOutlet weak var checkbox: CheckBox!
-    @IBOutlet weak var unitText: UILabel!
-    @IBOutlet weak var ingredientText: UILabel!
+class IngredientCell: UITableViewCell, CheckboxDataSource{
+  @IBOutlet weak var checkbox: CheckBox!
+  @IBOutlet weak var unitText: UILabel!
+  @IBOutlet weak var ingredientText: UILabel!
+  var delegate: IngredientCellDelegate?
+  
+  func getCellIndexPath() -> NSIndexPath{
+    return delegate!.getCellIndexPath(self)
+  }
+}
+protocol IngredientCellDelegate{
+  func getCellIndexPath(cell: UITableViewCell) -> NSIndexPath
 }
