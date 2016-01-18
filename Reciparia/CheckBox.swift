@@ -21,8 +21,7 @@ class CheckBox: UIButton{
       }
     }
   }
-  var checkboxDelegate: CheckboxDelegate?
-  var checkboxDataSource: CheckboxDataSource?
+  var delegate: CheckboxDelegate?
   
   override func awakeFromNib() {
     self.addTarget(self, action: "buttonClicked:", forControlEvents: .TouchUpInside)
@@ -32,17 +31,13 @@ class CheckBox: UIButton{
   func buttonClicked(sender: UIButton){
     if sender == self {
       isChecked = !isChecked
-      if let delegate = checkboxDelegate, dataSource = checkboxDataSource{
-        delegate.doChange(dataSource.getCellIndexPath())
+      if let delegateUnwrapped = delegate{
+        delegateUnwrapped.doChange()
       }
     }
   }
 }
 
 protocol CheckboxDelegate{
-  func doChange(checkboxIndex: NSIndexPath)
-}
-
-protocol CheckboxDataSource{
-  func getCellIndexPath() -> NSIndexPath
+  func doChange()
 }

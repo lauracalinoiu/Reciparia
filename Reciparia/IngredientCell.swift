@@ -8,16 +8,22 @@
 
 import UIKit
 
-class IngredientCell: UITableViewCell, CheckboxDataSource{
+class IngredientCell: UITableViewCell, CheckboxDelegate{
   @IBOutlet weak var checkbox: CheckBox!
   @IBOutlet weak var unitText: UILabel!
   @IBOutlet weak var ingredientText: UILabel!
   var delegate: IngredientCellDelegate?
   
-  func getCellIndexPath() -> NSIndexPath{
-    return delegate!.getCellIndexPath(self)
+  override func awakeFromNib() {
+    checkbox.delegate = self
+  }
+  
+  func doChange() {
+    if let unWrappedDelegate = delegate{
+      unWrappedDelegate.doChangeHavingCellIndexPath(self)
+    }
   }
 }
 protocol IngredientCellDelegate{
-  func getCellIndexPath(cell: UITableViewCell) -> NSIndexPath
+  func doChangeHavingCellIndexPath(cell: UITableViewCell)
 }
