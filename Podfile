@@ -4,7 +4,8 @@
 use_frameworks!
 
 target 'Reciparia' do
-	pod ‘Parse’, ‘~> 1.11.0’
+	pod ‘Parse’, ‘>= 1.11.0’
+	pod 'Kanna', '1.0.2’
 end
 
 target 'RecipariaTests' do

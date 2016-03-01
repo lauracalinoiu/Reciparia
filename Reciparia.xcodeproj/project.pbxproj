@@ -28,6 +28,11 @@
 		D375D9B61C312F030077A139 /* RecipariaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D375D9B51C312F030077A139 /* RecipariaTests.swift */; };
 		D375D9C11C31622F0077A139 /* RecipesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D375D9C01C31622F0077A139 /* RecipesCollectionViewController.swift */; };
 		D375D9C31C3164560077A139 /* RecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D375D9C21C3164560077A139 /* RecipeCell.swift */; };
+		D3784A441C85908600730929 /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3784A431C85908600730929 /* ActionViewController.swift */; };
+		D3784A471C85908600730929 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3784A451C85908600730929 /* MainInterface.storyboard */; };
+		D3784A4B1C85908600730929 /* RecipariaImport.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D3784A411C85908600730929 /* RecipariaImport.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D3784A531C85936F00730929 /* Kanna.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3784A521C85936F00730929 /* Kanna.framework */; };
+		D3784A571C85997800730929 /* Action.js in Resources */ = {isa = PBXBuildFile; fileRef = D3784A561C85997800730929 /* Action.js */; };
 		D38FA6C51C3BBDEF00892D02 /* ParseAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38FA6C41C3BBDEE00892D02 /* ParseAPIClient.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,7 +44,28 @@
 			remoteGlobalIDString = D375D99C1C312F030077A139;
 			remoteInfo = Reciparia;
 		};
+		D3784A491C85908600730929 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D375D9951C312F020077A139 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D3784A401C85908600730929;
+			remoteInfo = RecipariaImport;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D3784A4F1C85908600730929 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				D3784A4B1C85908600730929 /* RecipariaImport.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3A7DCBAA1B8FAC16DC7BF804 /* Pods-Reciparia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reciparia.release.xcconfig"; path = "Pods/Target Support Files/Pods-Reciparia/Pods-Reciparia.release.xcconfig"; sourceTree = "<group>"; };
@@ -69,6 +95,15 @@
 		D375D9B71C312F030077A139 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D375D9C01C31622F0077A139 /* RecipesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipesCollectionViewController.swift; sourceTree = "<group>"; };
 		D375D9C21C3164560077A139 /* RecipeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeCell.swift; sourceTree = "<group>"; };
+		D3784A411C85908600730929 /* RecipariaImport.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = RecipariaImport.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3784A431C85908600730929 /* ActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
+		D3784A461C85908600730929 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		D3784A481C85908600730929 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3784A501C85926000730929 /* Kanna.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kanna.framework; path = "Pods/../build/Debug-iphoneos/Kanna.framework"; sourceTree = "<group>"; };
+		D3784A521C85936F00730929 /* Kanna.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kanna.framework; path = "Pods/../build/Debug-iphoneos/Kanna.framework"; sourceTree = "<group>"; };
+		D3784A541C85968500730929 /* Reciparia.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Reciparia.entitlements; sourceTree = "<group>"; };
+		D3784A551C85971A00730929 /* RecipariaImport.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = RecipariaImport.entitlements; sourceTree = "<group>"; };
+		D3784A561C85997800730929 /* Action.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Action.js; sourceTree = "<group>"; };
 		D38FA6C41C3BBDEE00892D02 /* ParseAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseAPIClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -88,12 +123,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D3784A3E1C85908600730929 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3784A531C85936F00730929 /* Kanna.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		6FDDF5F06D4F2FCFEB009EA9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D3784A521C85936F00730929 /* Kanna.framework */,
+				D3784A501C85926000730929 /* Kanna.framework */,
 				7D1335859930A7CF977607BF /* Pods_Reciparia.framework */,
 			);
 			name = Frameworks;
@@ -115,6 +160,7 @@
 			children = (
 				D375D99F1C312F030077A139 /* Reciparia */,
 				D375D9B41C312F030077A139 /* RecipariaTests */,
+				D3784A421C85908600730929 /* RecipariaImport */,
 				D375D99E1C312F030077A139 /* Products */,
 				F39A2790FFCD44D80DAC250C /* Pods */,
 				6FDDF5F06D4F2FCFEB009EA9 /* Frameworks */,
@@ -126,6 +172,7 @@
 			children = (
 				D375D99D1C312F030077A139 /* Reciparia.app */,
 				D375D9B11C312F030077A139 /* RecipariaTests.xctest */,
+				D3784A411C85908600730929 /* RecipariaImport.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -133,6 +180,7 @@
 		D375D99F1C312F030077A139 /* Reciparia */ = {
 			isa = PBXGroup;
 			children = (
+				D3784A541C85968500730929 /* Reciparia.entitlements */,
 				D3598EE41C31775D002CD4F9 /* model */,
 				D375D9A01C312F030077A139 /* AppDelegate.swift */,
 				D375D9C01C31622F0077A139 /* RecipesCollectionViewController.swift */,
@@ -164,6 +212,18 @@
 			path = RecipariaTests;
 			sourceTree = "<group>";
 		};
+		D3784A421C85908600730929 /* RecipariaImport */ = {
+			isa = PBXGroup;
+			children = (
+				D3784A561C85997800730929 /* Action.js */,
+				D3784A551C85971A00730929 /* RecipariaImport.entitlements */,
+				D3784A431C85908600730929 /* ActionViewController.swift */,
+				D3784A451C85908600730929 /* MainInterface.storyboard */,
+				D3784A481C85908600730929 /* Info.plist */,
+			);
+			path = RecipariaImport;
+			sourceTree = "<group>";
+		};
 		F39A2790FFCD44D80DAC250C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,10 +246,12 @@
 				D375D99B1C312F030077A139 /* Resources */,
 				BCDE30A3C263E540C9D59A21 /* Embed Pods Frameworks */,
 				933A8FA6B2898A68F45B7C81 /* Copy Pods Resources */,
+				D3784A4F1C85908600730929 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D3784A4A1C85908600730929 /* PBXTargetDependency */,
 			);
 			name = Reciparia;
 			productName = Reciparia;
@@ -214,6 +276,23 @@
 			productReference = D375D9B11C312F030077A139 /* RecipariaTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		D3784A401C85908600730929 /* RecipariaImport */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D3784A4E1C85908600730929 /* Build configuration list for PBXNativeTarget "RecipariaImport" */;
+			buildPhases = (
+				D3784A3D1C85908600730929 /* Sources */,
+				D3784A3E1C85908600730929 /* Frameworks */,
+				D3784A3F1C85908600730929 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RecipariaImport;
+			productName = RecipariaImport;
+			productReference = D3784A411C85908600730929 /* RecipariaImport.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -230,11 +309,25 @@
 					D375D99C1C312F030077A139 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = JZ92YFTR72;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					D375D9B01C312F030077A139 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = JZ92YFTR72;
 						TestTargetID = D375D99C1C312F030077A139;
+					};
+					D3784A401C85908600730929 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = JZ92YFTR72;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -252,6 +345,7 @@
 			projectRoot = "";
 			targets = (
 				D375D99C1C312F030077A139 /* Reciparia */,
+				D3784A401C85908600730929 /* RecipariaImport */,
 				D375D9B01C312F030077A139 /* RecipariaTests */,
 			);
 		};
@@ -272,6 +366,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3784A3F1C85908600730929 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3784A571C85997800730929 /* Action.js in Resources */,
+				D3784A471C85908600730929 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +461,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D3784A3D1C85908600730929 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3784A441C85908600730929 /* ActionViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -365,6 +476,11 @@
 			isa = PBXTargetDependency;
 			target = D375D99C1C312F030077A139 /* Reciparia */;
 			targetProxy = D375D9B21C312F030077A139 /* PBXContainerItemProxy */;
+		};
+		D3784A4A1C85908600730929 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D3784A401C85908600730929 /* RecipariaImport */;
+			targetProxy = D3784A491C85908600730929 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -383,6 +499,14 @@
 				D375D9AA1C312F030077A139 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		D3784A451C85908600730929 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D3784A461C85908600730929 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -476,10 +600,15 @@
 			baseConfigurationReference = 74786332CDA69E5AA533191D /* Pods-Reciparia.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Reciparia/Reciparia.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Reciparia/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "-smurfs.exercism.com.Reciparia";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -488,10 +617,15 @@
 			baseConfigurationReference = 3A7DCBAA1B8FAC16DC7BF804 /* Pods-Reciparia.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Reciparia/Reciparia.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Reciparia/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "-smurfs.exercism.com.Reciparia";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -516,6 +650,44 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "-smurfs.exercism.com.RecipariaTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Reciparia.app/Reciparia";
+			};
+			name = Release;
+		};
+		D3784A4C1C85908600730929 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = RecipariaImport/RecipariaImport.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
+				INFOPLIST_FILE = RecipariaImport/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "-smurfs.exercism.com.Reciparia.RecipariaImport";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		D3784A4D1C85908600730929 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = RecipariaImport/RecipariaImport.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
+				INFOPLIST_FILE = RecipariaImport/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "-smurfs.exercism.com.Reciparia.RecipariaImport";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
@@ -548,6 +720,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		D3784A4E1C85908600730929 /* Build configuration list for PBXNativeTarget "RecipariaImport" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3784A4C1C85908600730929 /* Debug */,
+				D3784A4D1C85908600730929 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

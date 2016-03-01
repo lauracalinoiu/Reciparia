@@ -19,7 +19,7 @@ class Recipe: PFObject, PFSubclassing{
   @NSManaged var name: String?
   @NSManaged var pic: String?
   @NSManaged var steps: [Step]?
-  var toIngredients: PFRelation! {
+  var ingredients: PFRelation! {
     return relationForKey("ingredients")
   }
 }

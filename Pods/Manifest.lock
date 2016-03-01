@@ -1,13 +1,16 @@
 PODS:
-  - Bolts/Tasks (1.5.1)
-  - Parse (1.11.0):
+  - Bolts/Tasks (1.6.0)
+  - Kanna (1.0.2)
+  - Parse (1.12.0):
     - Bolts/Tasks (~> 1.5)
 
 DEPENDENCIES:
-  - Parse (~> 1.11.0)
+  - Kanna (= 1.0.2)
+  - Parse (>= 1.11.0)
 
 SPEC CHECKSUMS:
-  Bolts: a12663244b1d3351c738882e71902fc74db54f64
-  Parse: 886af46a0a677402f6374bb97ac212e795f70afe
+  Bolts: f52a250053bb517ca874523c3913776359ab3def
+  Kanna: 059afb193a9f8ea34f46cb55a8b11bf4257efad8
+  Parse: de2c52a9a1421b91ae7594ab8ce191afd184f19b
 
 COCOAPODS: 0.39.0

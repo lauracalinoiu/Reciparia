@@ -21,7 +21,7 @@ class RecipeViewController: UIViewController, UITableViewDelegate, UITableViewDa
     ingredientsTableView.dataSource = self
     tabBarController?.title = recipe.name
     
-    let query = recipe.toIngredients.query()
+    let query = recipe.ingredients.query()
     query.findObjectsInBackgroundWithBlock{results, error in
       if error == nil {
         if let objectsUnwrapped = results as? [Ingredient]{
@@ -38,11 +38,11 @@ class RecipeViewController: UIViewController, UITableViewDelegate, UITableViewDa
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier("IngredientCell", forIndexPath: indexPath) as! IngredientCellPlain
-    if let amount = ingredients[indexPath.row].amount, let unit = ingredients[indexPath.row].unit{
+    if let amount = ingredients[indexPath.row].quantity, let unit = ingredients[indexPath.row].unit{
       cell.quantityUnit.text = "\(amount) \(unit)"
     }
     
-    if let ingredientName = ingredients[indexPath.row].ingredient{
+    if let ingredientName = ingredients[indexPath.row].name{
       cell.ingredientName.text = ingredientName
     }
     

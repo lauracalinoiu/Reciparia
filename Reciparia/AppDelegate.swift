@@ -17,14 +17,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     
-    // MARK: - Parse Register Subclasses
     Ingredient.registerSubclass()
     Recipe.registerSubclass()
-    //    Step.registerSubclass()
-    
+  
     Parse.enableLocalDatastore()
-    Parse.setApplicationId("Z47Ni5RI5dpxIrmHFlUezalP5gNHbG2TJUSw8Ape",
-      clientKey: "p3zdaUwQCCkg2Sydgmt9M8hmsoyfL36n4weMJUoh")
+//    Parse.setApplicationId("zFJwZbsFb5ChqF6k8qMtEE4JV0v6nJOfiPFMgvye", clientKey: "0vZbPILiYhqSxUKnECIj1CFkyVwro3INtXca49MZ")
+    
+    
+    let parseConfiguration = ParseClientConfiguration(block: { (ParseMutableClientConfiguration) -> Void in
+      ParseMutableClientConfiguration.applicationId = "reciparia"
+      ParseMutableClientConfiguration.clientKey = "holla"
+      ParseMutableClientConfiguration.server = "https://amazing-parse.herokuapp.com/parse"
+    })
+    
+    Parse.initializeWithConfiguration(parseConfiguration)
     return true
   }
   

@@ -25,13 +25,13 @@ class IngredientsViewController: UIViewController, UITableViewDataSource, UITabl
     cell.delegate = self
     
     cell.checkbox.isChecked = indexPath.section == 1
-    if let amount = ingredients[indexPath.section][indexPath.row].amount {
+    if let amount = ingredients[indexPath.section][indexPath.row].quantity {
       cell.unitText.text = "\(amount)"
     }
     if let unit = ingredients[indexPath.section][indexPath.row].unit{
       cell.unitText.text = cell.unitText.text! + "  \(unit)"
     }
-    cell.ingredientText.text = ingredients[indexPath.section][indexPath.row].ingredient
+    cell.ingredientText.text = ingredients[indexPath.section][indexPath.row].name
     return cell
   }
   

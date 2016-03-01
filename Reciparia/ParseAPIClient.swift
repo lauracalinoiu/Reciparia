@@ -30,7 +30,7 @@ class ParseAPIClient{
   }
   
   func getIngredientsForARecipe(recipe: Recipe, completionHandler: (result: [Ingredient]!, error: String?) -> Void){
-    let query = recipe.toIngredients.query()
+    let query = recipe.ingredients.query()
     query.findObjectsInBackgroundWithBlock{results, error in
       if error == nil {
         if let objectsUnwrapped = results as? [Ingredient]{
@@ -45,7 +45,8 @@ class ParseAPIClient{
   func getAllIngredients(menuRecipes: [Recipe], result: (ingredients: [Ingredient]) -> Void){
     var ingredients: [Ingredient] = []
     
-    let tasks = menuRecipes.map { $0.toIngredients.query().findObjectsInBackground().continueWithBlock{task in
+    let tasks = menuRecipes.map {
+      $0.ingredients.query().findObjectsInBackground().continueWithBlock{task in
       if let objectsUnwrapped = task.result as? [Ingredient]{
         self.sync(ingredients){
           ingredients.appendContentsOf(objectsUnwrapped)
